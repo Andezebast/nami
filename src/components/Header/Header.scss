@@ -1,0 +1,52 @@
+.header {
+  background-color: rgba(6, 45, 78, 1);
+  max-height: 80px;
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    &-logo {
+      position: relative;
+      img {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        position: absolute;
+        top: -40px;
+        left: 0;
+      }
+    }
+    &-ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      .header-li {
+        color: white;
+        display: flex;
+        align-items: center;
+        transition: all 0.5s ease;
+        padding: 5px;
+        border-radius: 8px;
+        cursor: pointer;
+        &:hover {
+          background-color: white;
+          color: rgb(6, 45, 78);
+        }
+      }
+      .header-dot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+      }
+    }
+    &-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 120px;
+    }
+  }
+}

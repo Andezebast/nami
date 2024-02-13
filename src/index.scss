@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Neucha";
+  src: url("./fonts/Neucha-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  margin: 0;
+}
+:root {
+  font-family: "Neucha", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 66px;
+}
+.subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+}
+.paragraph {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+}
+.tabs {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.button {
+  background-color: rgba(49, 37, 37, 1);
+  border-radius: 8px;
+  padding: 5px 10px;
+}
