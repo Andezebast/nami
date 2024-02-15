@@ -1,6 +1,6 @@
 import "./MenuPage.scss";
 import Products from "../components/Products/Products";
-
+import Sidebar from "../components/Sidebar/Sidebar";
 function MenuPage() {
   return (
     <div className="menu page">
@@ -10,6 +10,7 @@ function MenuPage() {
           <Products />
         </div>
       </div>
+      <Sidebar />
     </div>
   );
 }

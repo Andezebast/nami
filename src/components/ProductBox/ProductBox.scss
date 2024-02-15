@@ -1,0 +1,96 @@
+.product-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  .wishlist {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  &-image {
+    width: 130px;
+    height: 130px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    & > div {
+      position: relative;
+      span {
+        position: absolute;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+        line-height: 110%;
+        width: 100%;
+        text-align: center;
+        color: black;
+        background-color: white;
+        padding: 5px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        &.show {
+          opacity: 1;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid #fff;
+          bottom: -14px;
+          left: 45%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+    p {
+      color: rgb(20, 20, 20);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 140px;
+      cursor: pointer;
+    }
+    span {
+      color: rgb(128, 128, 128);
+    }
+  }
+  &-subtitle {
+    flex-grow: 1;
+    padding-bottom: 40px;
+    p {
+      color: rgb(128, 128, 128);
+    }
+  }
+  &-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      color: rgb(20, 20, 20);
+    }
+  }
+}

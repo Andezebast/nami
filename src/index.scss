@@ -10,7 +10,9 @@ body {
 :root {
   font-family: "Neucha", sans-serif;
 }
-
+p {
+  margin: 0;
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -30,6 +32,11 @@ body {
   font-weight: 400;
   line-height: 100%;
 }
+.paragraph-mini {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
 .tabs {
   font-size: 28px;
   font-weight: 400;
@@ -37,6 +44,9 @@ body {
 }
 .button {
   background-color: rgba(49, 37, 37, 1);
+  color: white;
+  padding: 10px 20px;
+  min-width: 100px;
   border-radius: 8px;
-  padding: 5px 10px;
+  border-style: unset;
 }

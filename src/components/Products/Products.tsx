@@ -1,4 +1,5 @@
 import { FC, Fragment } from "react";
+import "./Products.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchProducts } from "../../store/productsSlice";
 import { useEffect } from "react";
@@ -26,14 +27,14 @@ const Products: FC = () => {
     );
   }
   return (
-    <div>
+    <>
       {data.length &&
         data.map((product, index) => (
           <Fragment key={index}>
             <ProductBox product={product} />
           </Fragment>
         ))}
-    </div>
+    </>
   );
 };
 
