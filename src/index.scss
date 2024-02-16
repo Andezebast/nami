@@ -4,8 +4,10 @@
   font-weight: normal;
   font-style: normal;
 }
-body {
+body,
+#root {
   margin: 0;
+  height: 100vh;
 }
 :root {
   font-family: "Neucha", sans-serif;

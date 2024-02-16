@@ -10,7 +10,6 @@ interface IProps {
 const ProductBox: FC<IProps> = ({ product }) => {
   const [productPopUp, setProductPopUp] = useState<boolean>(false);
 
-  console.log(product, "product");
   return (
     <div className="product-box">
       <div className="wishlist">

@@ -1,12 +1,39 @@
 import { FC, useState } from "react";
 import "./Sidebar.scss";
-import Roll from "./image/roll.png";
-import HandRoll from "./image/hand-roll.png";
-import Sushi from "./image/sushi.png";
-import Sashumi from "./image/sashumi.png";
+import Roll from "../../svg/Roll";
+import Sushi from "../../svg/Sushi";
+import Sashimi from "../../svg/Sashimi";
+import HandRoll from "../../svg/HandRoll";
+import { IProduct } from "../../models/IProduct";
 
-const Sidebar: FC = () => {
+interface ISidebarProps {
+  data: IProduct[];
+  setCurrentData: Function;
+}
+/*-------------------*/
+const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
   const [sidebarActive, setSidebarActive] = useState<boolean>(false);
+  const [activeLi, setActiveLi] = useState<string>("All");
+  const handleEventLi = (id: string) => {
+    setActiveLi(id);
+    switch (id) {
+      case "All":
+        setCurrentData(data);
+        break;
+      case "Roll":
+        setCurrentData(data.filter((product) => product.category === id));
+        break;
+      case "HandRoll":
+        setCurrentData(data.filter((product) => product.category === id));
+        break;
+      case "Sushi":
+        setCurrentData(data.filter((product) => product.category === id));
+        break;
+      case "Sashimi":
+        setCurrentData(data.filter((product) => product.category === id));
+        break;
+    }
+  };
   return (
     <div
       className={`sidebar ${sidebarActive ? "show" : ""}`}
@@ -14,20 +41,43 @@ const Sidebar: FC = () => {
       onMouseOut={() => setSidebarActive(false)}
     >
       <ul className="sidebar-ul">
-        <li className="sidebar-ul-li">
-          <img src={Roll} alt="roll" />
+        <li
+          className={`sidebar-ul-li ${activeLi === "All" ? "active" : ""}`}
+          id="All"
+          onClick={(e) => handleEventLi(e.currentTarget.id)}
+        >
+          <p className="tabs">All</p>
+        </li>
+        <li
+          className={`sidebar-ul-li ${activeLi === "Roll" ? "active" : ""}`}
+          id="Roll"
+          onClick={(e) => handleEventLi(e.currentTarget.id)}
+        >
+          <Roll />
           <p className="tabs">Роли</p>
         </li>
-        <li className="sidebar-ul-li">
-          <img src={HandRoll} alt="hand roll" />
+        <li
+          className={`sidebar-ul-li ${activeLi === "HandRoll" ? "active" : ""}`}
+          id="HandRoll"
+          onClick={(e) => handleEventLi(e.currentTarget.id)}
+        >
+          <HandRoll />
           <p className="tabs">Ручні роли</p>
         </li>
-        <li className="sidebar-ul-li">
-          <img src={Sushi} alt="Sushi" />
+        <li
+          className={`sidebar-ul-li ${activeLi === "Sushi" ? "active" : ""}`}
+          id="Sushi"
+          onClick={(e) => handleEventLi(e.currentTarget.id)}
+        >
+          <Sushi />
           <p className="tabs">Суші</p>
         </li>
-        <li className="sidebar-ul-li">
-          <img src={Sashumi} alt="Sashumi" />
+        <li
+          className={`sidebar-ul-li ${activeLi === "Sashimi" ? "active" : ""}`}
+          id="Sashimi"
+          onClick={(e) => handleEventLi(e.currentTarget.id)}
+        >
+          <Sashimi />
           <p className="tabs">Сашимі</p>
         </li>
       </ul>

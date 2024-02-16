@@ -19,20 +19,52 @@
     &-li {
       display: flex;
       align-items: center;
-      padding: 10px 25px;
+      padding: 5px 25px;
       margin: 5px 0;
       border-radius: 12px;
       box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
-      img {
+      transition: all 0.5s ease;
+      cursor: pointer;
+      &.active,
+      &:hover {
+        background-color: rgb(6, 45, 78);
+
+        svg {
+          g {
+            rect {
+              fill: white;
+            }
+          }
+        }
+        p {
+          color: white;
+        }
+      }
+      &:first-child {
+        justify-content: center;
+        padding: 10px 25px;
+        p {
+          &:first-child {
+            padding: 0;
+          }
+        }
+      }
+      svg {
         width: 50px;
         height: 50px;
-        object-fit: contain;
+        overflow: initial;
+        g {
+          rect {
+            fill: rgb(49, 37, 37);
+          }
+        }
       }
       p {
         margin: 0;
         padding-left: 25px;
         white-space: nowrap;
         overflow: hidden;
+        color: rgb(49, 37, 37);
       }
     }
   }

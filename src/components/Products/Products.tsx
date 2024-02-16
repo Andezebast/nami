@@ -1,17 +1,15 @@
 import { FC, Fragment } from "react";
 import "./Products.scss";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { fetchProducts } from "../../store/productsSlice";
-import { useEffect } from "react";
 import ProductBox from "../ProductBox/ProductBox";
-const Products: FC = () => {
-  const { data, error, loading } = useAppSelector(
-    (state) => state.productSlice
-  );
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+import { IProduct } from "../../models/IProduct";
+
+interface IProductsProps {
+  currentData: IProduct[];
+  error: string | null;
+  loading: boolean;
+}
+
+const Products: FC<IProductsProps> = ({ currentData, loading, error }) => {
   if (loading) {
     return (
       <div className="loading">
@@ -28,8 +26,8 @@ const Products: FC = () => {
   }
   return (
     <>
-      {data.length &&
-        data.map((product, index) => (
+      {currentData.length &&
+        currentData.map((product, index) => (
           <Fragment key={index}>
             <ProductBox product={product} />
           </Fragment>
