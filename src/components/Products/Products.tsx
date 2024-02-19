@@ -8,7 +8,6 @@ interface IProductsProps {
   error: string | null;
   loading: boolean;
 }
-
 const Products: FC<IProductsProps> = ({ currentData, loading, error }) => {
   if (loading) {
     return (

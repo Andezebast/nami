@@ -3,7 +3,7 @@ import "./MenuPage.scss";
 import Products from "../components/Products/Products";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchProducts } from "../store/productsSlice";
+import { fetchProducts } from "../store/Products/productsSlice";
 import { IProduct } from "../models/IProduct";
 
 const MenuPage: FC = () => {

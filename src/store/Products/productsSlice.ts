@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "../models/IProduct";
-import { IApiResponse } from "../models/IApiResponse";
+import { IProduct } from "../../models/IProduct";
+import { IApiResponse } from "../../models/IApiResponse";
+
+interface IQuantity {
+  id: number;
+  action: string;
+}
 
 const initialState: IApiResponse<IProduct[]> = {
   data: [],
@@ -23,6 +28,26 @@ export const productsSlice = createSlice({
     fetchProductsError(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
+    },
+    quantityShoppingCart(state, action: PayloadAction<IQuantity>) {
+      const id = action.payload.id;
+      const actions = action.payload.action;
+      switch (actions) {
+        case "minus":
+          state.data.forEach((product) => {
+            if (product.id === id && product.quantity >= 2) {
+              product.quantity--;
+            }
+          });
+          break;
+        case "plus":
+          state.data.forEach((product) => {
+            if (product.id === id) {
+              product.quantity++;
+            }
+          });
+          break;
+      }
     },
   },
 });

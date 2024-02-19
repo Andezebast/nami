@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import productSlice from "./productsSlice";
-import { AllSaga } from "./ProductsSaga";
+import productSlice from "./Products/productsSlice";
+import shoppingCartSlice from "./ShoppingCart/ShoppingCartSlice";
+import { AllSaga } from "./Products/ProductsSaga";
 const rootReducer = combineReducers({
   productSlice,
+  shoppingCartSlice,
 });
 
 const sagaMiddleware = createSagaMiddleware();
