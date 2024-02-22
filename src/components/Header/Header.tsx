@@ -4,8 +4,18 @@ import logo from "./image/logo.png";
 import PhoneSVG from "../../svg/Phone";
 import ShoppingCartSVG from "../../svg/ShoppingCart";
 import Dot from "../../svg/Dot";
+import { useAppSelector } from "../../hooks/redux";
 
 const Header: FC = () => {
+  const { data } = useAppSelector((state) => state.productSlice);
+  const { shoppingCartProducts } = useAppSelector(
+    (state) => state.shoppingCartSlice
+  );
+  const cartProductIds = shoppingCartProducts.map((product) => product.id);
+  const currentProducts = data.filter((item) =>
+    cartProductIds.includes(item.id)
+  );
+  console.log(currentProducts, "currentProducts");
   return (
     <div className="header">
       <div className="container">

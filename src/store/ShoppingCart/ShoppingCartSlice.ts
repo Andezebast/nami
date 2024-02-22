@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "../../models/IProduct";
 
-// interface IQuantity {
-//   id: number;
-//   action: string;
-// }
+interface IQuantity {
+  id: number;
+  action: string;
+}
+interface IStateItem {
+  id: number;
+  quantity: number;
+}
 interface ProductsState {
-  shoppingCartProducts: IProduct[];
+  shoppingCartProducts: IStateItem[];
 }
 
 const initialState: ProductsState = {
@@ -17,14 +20,44 @@ export const shoppingCartSlice = createSlice({
   name: "shoppingCart",
   initialState,
   reducers: {
-    addShoppingCart(state, actions: PayloadAction<IProduct>) {
-      state.shoppingCartProducts.push(actions.payload);
-      console.log(actions.payload, "shopping store");
+    addToShoppingCart(state, action: PayloadAction<number>) {
+      const cartItem = {
+        id: action.payload,
+        quantity: 1,
+      };
+      state.shoppingCartProducts.push(cartItem);
     },
-    removeShoppingCart() {},
+    quantityShoppingCart(state, action: PayloadAction<IQuantity>) {
+      const id = action.payload.id;
+      const actions = action.payload.action;
+      switch (actions) {
+        case "minus":
+          state.shoppingCartProducts.forEach((product) => {
+            if (product.id === id && product.quantity >= 2) {
+              product.quantity--;
+            }
+          });
+          break;
+        case "plus":
+          state.shoppingCartProducts.forEach((product) => {
+            if (product.id === id) {
+              product.quantity++;
+            }
+          });
+          break;
+      }
+    },
+    removeFromShoppingCart(state, action: PayloadAction<number>) {
+      state.shoppingCartProducts.filter(
+        (product) => product.id !== action.payload
+      );
+    },
   },
 });
-export const { addShoppingCart, removeShoppingCart } =
-  shoppingCartSlice.actions;
+export const {
+  addToShoppingCart,
+  quantityShoppingCart,
+  removeFromShoppingCart,
+} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;

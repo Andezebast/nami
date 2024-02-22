@@ -14,25 +14,14 @@ interface ISidebarProps {
 const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
   const [sidebarActive, setSidebarActive] = useState<boolean>(false);
   const [activeLi, setActiveLi] = useState<string>("All");
+
   const handleEventLi = (id: string) => {
     setActiveLi(id);
-    switch (id) {
-      case "All":
-        setCurrentData(data);
-        break;
-      case "Roll":
-        setCurrentData(data.filter((product) => product.category === id));
-        break;
-      case "HandRoll":
-        setCurrentData(data.filter((product) => product.category === id));
-        break;
-      case "Sushi":
-        setCurrentData(data.filter((product) => product.category === id));
-        break;
-      case "Sashimi":
-        setCurrentData(data.filter((product) => product.category === id));
-        break;
+    if (id === "All") {
+      setCurrentData(data);
+      return;
     }
+    setCurrentData(data.filter((product) => product.category === id));
   };
   return (
     <div
