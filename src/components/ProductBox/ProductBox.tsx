@@ -52,24 +52,24 @@ const ProductBox: FC<IProps> = ({ product }) => {
         <img src={product.image} alt="product-box-image" />
       </div>
       <div className="product-box-title">
-        <div className="subtitle">
+        <div className="text-xl">
           <p
             onMouseOver={() => setProductPopUp(true)}
             onMouseOut={() => setProductPopUp(false)}
           >
             {product.title}
           </p>
-          <span className={`${productPopUp ? "show" : ""}`}>
+          <span className={`text-base ${productPopUp ? "show" : ""}`}>
             {product.title}
           </span>
         </div>
-        <span className="paragraph-mini">{product.grams}</span>
+        <span className="text-sm">{product.grams}</span>
       </div>
       <div className="product-box-subtitle">
-        <p className="paragraph">{product.subtitle}</p>
+        <p className="text-base">{product.subtitle}</p>
       </div>
       <div className="product-box-price">
-        <p className="subtitle">{product.price}</p>
+        <p className="text-xl">{product.price}</p>
         {shoppingCartProducts.length &&
         shoppingCartProducts.findIndex(
           (shoppingCartProduct) => shoppingCartProduct.id == product.id
@@ -78,7 +78,7 @@ const ProductBox: FC<IProps> = ({ product }) => {
             <div className="minus" onClick={() => handleMinusEvent(product.id)}>
               <Minus />
             </div>
-            <div className="number subtitle">{productQuantity}</div>
+            <div className="number text-xl">{productQuantity}</div>
             <div className="plus" onClick={() => handlePlusEvent(product.id)}>
               <Plus />
             </div>

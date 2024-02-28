@@ -47,6 +47,10 @@
       align-items: center;
       justify-content: space-between;
       width: 120px;
+      .header-content-phone,
+      .header-content-shop {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -35,7 +35,7 @@ const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
           id="All"
           onClick={(e) => handleEventLi(e.currentTarget.id)}
         >
-          <p className="tabs">All</p>
+          <p className="text-3xl">All</p>
         </li>
         <li
           className={`sidebar-ul-li ${activeLi === "Roll" ? "active" : ""}`}
@@ -43,7 +43,7 @@ const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
           onClick={(e) => handleEventLi(e.currentTarget.id)}
         >
           <Roll />
-          <p className="tabs">Роли</p>
+          <p className="text-3xl">Роли</p>
         </li>
         <li
           className={`sidebar-ul-li ${activeLi === "HandRoll" ? "active" : ""}`}
@@ -51,7 +51,7 @@ const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
           onClick={(e) => handleEventLi(e.currentTarget.id)}
         >
           <HandRoll />
-          <p className="tabs">Ручні роли</p>
+          <p className="text-3xl">Ручні роли</p>
         </li>
         <li
           className={`sidebar-ul-li ${activeLi === "Sushi" ? "active" : ""}`}
@@ -59,7 +59,7 @@ const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
           onClick={(e) => handleEventLi(e.currentTarget.id)}
         >
           <Sushi />
-          <p className="tabs">Суші</p>
+          <p className="text-3xl">Суші</p>
         </li>
         <li
           className={`sidebar-ul-li ${activeLi === "Sashimi" ? "active" : ""}`}
@@ -67,7 +67,7 @@ const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
           onClick={(e) => handleEventLi(e.currentTarget.id)}
         >
           <Sashimi />
-          <p className="tabs">Сашимі</p>
+          <p className="text-3xl">Сашимі</p>
         </li>
       </ul>
     </div>

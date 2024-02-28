@@ -12,14 +12,14 @@ const Products: FC<IProductsProps> = ({ currentData, loading, error }) => {
   if (loading) {
     return (
       <div className="loading">
-        <p className="subtitle">Loading...</p>
+        <p className="text-3xl">Loading...</p>
       </div>
     );
   }
   if (error) {
     return (
       <div className="error">
-        <p>{error}</p>
+        <p className="text-3xl">{error}</p>
       </div>
     );
   }

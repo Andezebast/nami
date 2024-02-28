@@ -93,9 +93,6 @@
     p {
       color: rgb(20, 20, 20);
     }
-    button {
-      cursor: pointer;
-    }
   }
   &-shopping-cart {
     display: flex;
@@ -137,6 +134,9 @@
       span {
         color: white;
       }
+    }
+    .product-box-title > div > span {
+      color: black;
     }
   }
 }

@@ -22,7 +22,7 @@ const MenuPage: FC = () => {
   return (
     <div className="menu page">
       <div className="container">
-        <div className="menu-title title">Меню</div>
+        <div className="menu-title text-6xl">Меню</div>
         <div className="menu-products">
           <Products currentData={currentData} loading={loading} error={error} />
         </div>
