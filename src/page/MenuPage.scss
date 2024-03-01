@@ -34,6 +34,11 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px;
     width: 100%;
+    .loading,
+    .error {
+      grid-column: 2 / 4;
+      text-align: center;
+    }
   }
 }
 .menu .container {

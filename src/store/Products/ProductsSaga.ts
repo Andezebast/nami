@@ -1,11 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { IProduct } from "../../models/IProduct";
-import {
-  fetchProducts,
-  fetchProductsSuccess,
-  fetchProductsError,
-} from "./productsSlice";
+import { fetchProducts, fetchProductsSuccess, fetchProductsError } from "./productsSlice";
 import { IApiResponse } from "../../models/IApiResponse";
 
 function* productsSage() {

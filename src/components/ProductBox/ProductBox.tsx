@@ -10,13 +10,10 @@ import Plus from "../../svg/Plus";
 interface IProps {
   product: IProduct;
 }
-
 const ProductBox: FC<IProps> = ({ product }) => {
   const [productPopUp, setProductPopUp] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const { shoppingCartProducts } = useAppSelector(
-    (state) => state.shoppingCartSlice
-  );
+  const { shoppingCartProducts } = useAppSelector((state) => state.shoppingCartSlice);
   const handleMinusEvent = (id: number) => {
     dispatch(
       shoppingCartSlice.actions.quantityShoppingCart({
@@ -40,11 +37,7 @@ const ProductBox: FC<IProps> = ({ product }) => {
     (shoppingCartProduct) => shoppingCartProduct.id === product.id
   )?.quantity;
   return (
-    <div
-      className={`product-box ${
-        productQuantity && productQuantity > 0 ? "shopping-cart" : ""
-      }`}
-    >
+    <div className={`product-box ${productQuantity && productQuantity > 0 ? "shopping-cart" : ""}`}>
       <div className="wishlist">
         <WishList />
       </div>
@@ -53,15 +46,10 @@ const ProductBox: FC<IProps> = ({ product }) => {
       </div>
       <div className="product-box-title">
         <div className="text-xl">
-          <p
-            onMouseOver={() => setProductPopUp(true)}
-            onMouseOut={() => setProductPopUp(false)}
-          >
+          <p onMouseOver={() => setProductPopUp(true)} onMouseOut={() => setProductPopUp(false)}>
             {product.title}
           </p>
-          <span className={`text-base ${productPopUp ? "show" : ""}`}>
-            {product.title}
-          </span>
+          <span className={`text-base ${productPopUp ? "show" : ""}`}>{product.title}</span>
         </div>
         <span className="text-sm">{product.grams}</span>
       </div>
@@ -71,9 +59,7 @@ const ProductBox: FC<IProps> = ({ product }) => {
       <div className="product-box-price">
         <p className="text-xl">{product.price}</p>
         {shoppingCartProducts.length &&
-        shoppingCartProducts.findIndex(
-          (shoppingCartProduct) => shoppingCartProduct.id == product.id
-        ) > -1 ? (
+        shoppingCartProducts.findIndex((shoppingCartProduct) => shoppingCartProduct.id == product.id) > -1 ? (
           <div className="product-box-shopping-cart">
             <div className="minus" onClick={() => handleMinusEvent(product.id)}>
               <Minus />

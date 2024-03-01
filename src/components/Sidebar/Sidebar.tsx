@@ -10,7 +10,6 @@ interface ISidebarProps {
   data: IProduct[];
   setCurrentData: Function;
 }
-/*-------------------*/
 const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
   const [sidebarActive, setSidebarActive] = useState<boolean>(false);
   const [activeLi, setActiveLi] = useState<string>("All");
@@ -35,7 +34,7 @@ const Sidebar: FC<ISidebarProps> = ({ data, setCurrentData }) => {
           id="All"
           onClick={(e) => handleEventLi(e.currentTarget.id)}
         >
-          <p className="text-3xl">All</p>
+          <p className="text-3xl">Всі категорії</p>
         </li>
         <li
           className={`sidebar-ul-li ${activeLi === "Roll" ? "active" : ""}`}

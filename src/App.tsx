@@ -8,15 +8,9 @@ const App: FC = () => {
   const [shoppCartBool, setShoppCartBool] = useState<boolean>(false);
   return (
     <div className="nami">
-      <Header
-        shoppCartBool={shoppCartBool}
-        setShoppCartBool={setShoppCartBool}
-      />
+      <Header shoppCartBool={shoppCartBool} setShoppCartBool={setShoppCartBool} />
       <Menu />
-      <ShoppingCart
-        shoppCartBool={shoppCartBool}
-        setShoppCartBool={setShoppCartBool}
-      />
+      <ShoppingCart shoppCartBool={shoppCartBool} setShoppCartBool={setShoppCartBool} />
     </div>
   );
 };

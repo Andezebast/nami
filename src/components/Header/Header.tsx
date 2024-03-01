@@ -4,13 +4,14 @@ import logo from "./image/logo.png";
 import PhoneSVG from "../../svg/Phone";
 import ShoppingCartSVG from "../../svg/ShoppingCart";
 import Dot from "../../svg/Dot";
+import { useAppSelector } from "../../hooks/redux";
 
 interface IHeaderProps {
   shoppCartBool: boolean;
   setShoppCartBool: Function;
 }
-
 const Header: FC<IHeaderProps> = ({ shoppCartBool, setShoppCartBool }) => {
+  const { shoppingCartProducts } = useAppSelector((state) => state.shoppingCartSlice);
   const handleShoppingCartEvent = () => {
     setShoppCartBool(!shoppCartBool);
     const body = document.querySelector("body");
@@ -46,11 +47,11 @@ const Header: FC<IHeaderProps> = ({ shoppCartBool, setShoppCartBool }) => {
             <div className="header-content-phone">
               <PhoneSVG />
             </div>
-            <div
-              className="header-content-shop"
-              onClick={handleShoppingCartEvent}
-            >
+            <div className="header-content-shop" onClick={handleShoppingCartEvent}>
               <ShoppingCartSVG />
+              {shoppingCartProducts.length > 0 && (
+                <div className="header-content-shop-count">{shoppingCartProducts.length}</div>
+              )}
             </div>
           </div>
         </div>

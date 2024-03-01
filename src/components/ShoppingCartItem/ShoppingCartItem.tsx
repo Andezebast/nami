@@ -1,23 +1,26 @@
 import { FC } from "react";
 import "./ShoppingCartItem.scss";
-import { IProduct } from "../../models/IProduct";
 import Minus from "../../svg/Minus";
 import Plus from "../../svg/Plus";
+import Trash from "../../svg/Trash";
+import { IProduct } from "../../models/IProduct";
 import { shoppingCartSlice } from "../../store/ShoppingCart/ShoppingCartSlice";
 import { IShoppingCart } from "../../models/IShoppingCart";
 import { useAppDispatch } from "../../hooks/redux";
 
 interface IProps {
-  product: IProduct;
+  currentProduct: {
+    product: IProduct;
+    sum: number;
+  };
   shoppingCartProducts: IShoppingCart[];
 }
-
-const ShoppingCartItem: FC<IProps> = ({ product, shoppingCartProducts }) => {
-  const dispatch = useAppDispatch();
+const ShoppingCartItem: FC<IProps> = ({ currentProduct, shoppingCartProducts }) => {
+  const { product, sum } = currentProduct;
   const productQuantity = shoppingCartProducts.find(
     (shoppingCartProduct) => shoppingCartProduct.id === product.id
   )?.quantity;
-
+  const dispatch = useAppDispatch();
   const handleMinusEvent = (id: number) => {
     dispatch(
       shoppingCartSlice.actions.quantityShoppingCart({
@@ -33,6 +36,9 @@ const ShoppingCartItem: FC<IProps> = ({ product, shoppingCartProducts }) => {
         action: "plus",
       })
     );
+  };
+  const handleEventDelete = (id: number) => {
+    dispatch(shoppingCartSlice.actions.removeFromShoppingCart(id));
   };
   return (
     <div className="shopping-cart-item">
@@ -69,11 +75,13 @@ const ShoppingCartItem: FC<IProps> = ({ product, shoppingCartProducts }) => {
         </div>
         <div className="shopping-cart-item-result-sum">
           <p className="text-sm">
-            Сумма: <span className="text-base">123</span>
+            Сумма: <span className="text-base">{sum} ₴</span>
           </p>
         </div>
       </div>
-      <div className="shopping-cart-item-delete"></div>
+      <div className="shopping-cart-item-delete" onClick={() => handleEventDelete(product.id)}>
+        <Trash />
+      </div>
     </div>
   );
 };

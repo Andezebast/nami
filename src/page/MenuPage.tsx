@@ -11,10 +11,7 @@ const MenuPage: FC = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  /*------------------------------*/
-  const { data, loading, error } = useAppSelector(
-    (state) => state.productSlice
-  );
+  const { data, loading, error } = useAppSelector((state) => state.productSlice);
   const [currentData, setCurrentData] = useState<IProduct[]>([]);
   useEffect(() => {
     setCurrentData(data);

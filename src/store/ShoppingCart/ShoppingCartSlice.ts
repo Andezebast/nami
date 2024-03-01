@@ -44,16 +44,10 @@ export const shoppingCartSlice = createSlice({
       }
     },
     removeFromShoppingCart(state, action: PayloadAction<number>) {
-      state.shoppingCartProducts.filter(
-        (product) => product.id !== action.payload
-      );
+      state.shoppingCartProducts = state.shoppingCartProducts.filter((product) => product.id !== action.payload);
     },
   },
 });
-export const {
-  addToShoppingCart,
-  quantityShoppingCart,
-  removeFromShoppingCart,
-} = shoppingCartSlice.actions;
+export const { addToShoppingCart, quantityShoppingCart, removeFromShoppingCart } = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
